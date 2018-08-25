@@ -9,12 +9,17 @@ num_labels = size(Theta2, 1);
 
 % You need to return the following variables correctly 
 p = zeros(size(X, 1), 1);
-
 % ====================== YOUR CODE HERE ======================
 % Instructions: Complete the following code to make predictions using
 %               your learned neural network. You should set p to a 
 %               vector containing labels between 1 to num_labels.
-%
+X = [ones(m,1) X];
+a_1 = sigmoid(Theta1*X');
+num_a_1 = size(a_1,2);
+a_1 = [ones(1,num_a_1);a_1];
+a_2 = sigmoid(Theta2*a_1);
+[temp,p] = max(a_2', [], 2);
+
 % Hint: The max function might come in useful. In particular, the max
 %       function can also return the index of the max element, for more
 %       information see 'help max'. If your examples are in rows, then, you

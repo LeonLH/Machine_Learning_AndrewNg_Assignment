@@ -13,7 +13,7 @@ num_labels = size(all_theta, 1);
 
 % You need to return the following variables correctly 
 p = zeros(size(X, 1), 1);
-
+pi = p;
 % Add ones to the X data matrix
 X = [ones(m, 1) X];
 
@@ -23,6 +23,10 @@ X = [ones(m, 1) X];
 %               You should set p to a vector of predictions (from 1 to
 %               num_labels).
 %
+temp_prediction = sigmoid(X*all_theta');
+
+[p,pi] = max(temp_prediction, [], 2);
+p = pi;
 % Hint: This code can be done all vectorized using the max function.
 %       In particular, the max function can also return the index of the 
 %       max element, for more information see 'help max'. If your examples 
